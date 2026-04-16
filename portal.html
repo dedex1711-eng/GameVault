@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault Cloud – Portal do Membro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body>
+
+  <!-- AUTH GUARD: shown while checking login -->
+  <div id="authGuard" class="auth-guard">
+    <div class="spinner-large"></div>
+  </div>
+
+  <!-- PORTAL LAYOUT (hidden until auth confirmed) -->
+  <div id="portalApp" class="portal-app" style="display:none;">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <span>🎮</span>
+        <span class="logo-text">Game<span class="accent">Vault</span></span>
+      </div>
+
+      <div class="sidebar-section-label">INSTALAÇÃO OFICIAL</div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="pc">
+          <span class="nav-icon">🖥️</span>
+          <span class="nav-label">Instalação PC</span>
+          <span class="nav-badge badge-green">PRODUTO PRINCIPAL</span>
+        </a>
+        <a href="#" class="nav-item" data-page="celular">
+          <span class="nav-icon">📱</span>
+          <span class="nav-label">Instalação Celular</span>
+        </a>
+        <a href="#" class="nav-item" data-page="tvbox">
+          <span class="nav-icon">📦</span>
+          <span class="nav-label">Instalação TV Box</span>
+        </a>
+        <a href="#" class="nav-item" data-page="tvandroid">
+          <span class="nav-icon">📺</span>
+          <span class="nav-label">Instalação TV Android</span>
+        </a>
+        <a href="#" class="nav-item nav-item-premium" data-page="ps3" id="navPs3">
+          <span class="nav-icon">🎮</span>
+          <span class="nav-label">Instalação PS3</span>
+          <span class="nav-badge badge-purple">OPÇÃO PREMIUM</span>
+        </a>
+        <a href="#" class="nav-item nav-item-premium" data-page="ps4" id="navPs4">
+          <span class="nav-icon">🎮</span>
+          <span class="nav-label">Instalação PS4</span>
+          <span class="nav-badge badge-purple">OPÇÃO PREMIUM</span>
+        </a>
+        <a href="#" class="nav-item nav-item-premium" data-page="ps5" id="navPs5">
+          <span class="nav-icon">🎮</span>
+          <span class="nav-label">Instalação PS5</span>
+          <span class="nav-badge badge-purple">OPÇÃO PREMIUM</span>
+        </a>
+        <a href="#" class="nav-item" data-page="projetor">
+          <span class="nav-icon">📽️</span>
+          <span class="nav-label">Instalação Projetor</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="#" class="nav-item nav-item-support" data-page="suporte">
+          <span class="nav-icon">🛟</span>
+          <span class="nav-label">Suporte</span>
+          <span class="nav-badge badge-orange">CLIQUE AQUI P/ AJUDA</span>
+        </a>
+        <button class="btn-logout" id="btnLogout">
+          <span>↩️</span> Sair do Portal
+        </button>
+      </div>
+    </aside>
+
+    <!-- MOBILE HEADER -->
+    <div class="mobile-header">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <div class="mobile-logo">🎮 Game<span class="accent">Vault</span></div>
+      <div class="user-avatar-small" id="userAvatarSmall"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- TOP BAR -->
+      <div class="topbar">
+        <div class="topbar-title" id="topbarTitle">GameVault Cloud v2.1</div>
+        <div class="topbar-user">
+          <div class="user-info">
+            <span class="user-name" id="userName">Carregando...</span>
+            <span class="user-plan" id="userPlan">MEMBRO</span>
+          </div>
+          <div class="user-avatar" id="userAvatar"></div>
+        </div>
+      </div>
+
+      <!-- PAGES -->
+      <div class="page-content" id="pageContent">
+        <!-- Conteúdo dinâmico via JS -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- SIDEBAR OVERLAY (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <script src="config.js"></script>
+  <script src="portal.js"></script>
+</body>
+</html>
