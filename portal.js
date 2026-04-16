@@ -127,7 +127,7 @@ authGuard.style.display = "none";
 portalApp.style.display = "flex";
 
 // Preenche dados do usuário
-var firstName = ainda_existe.nome ? ainda_existe.nome.split(" ")[0] : ainda_existe.email.split("@")[0];
+var firstName = usuario.nome ? usuario.nome.split(" ")[0] : usuario.email.split("@")[0];
 var initial   = firstName[0].toUpperCase();
 
 userNameEl.textContent        = firstName;
