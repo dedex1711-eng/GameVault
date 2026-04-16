@@ -1,5 +1,5 @@
 var SUPABASE_URL = "https://fqzgywnxmznghvqlnxjl.supabase.co";
-var SUPABASE_KEY = "sb_publishable_8aOx9fZN2rNchEEbt7N4cA_XyTYXdQw";
+var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxemd5d254bXpuZ2h2cWxueGpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTY0NzcsImV4cCI6MjA5MTkzMjQ3N30.Cv8r70nYMoRyk_O3HFwxluOWaSMwVGko-uonxqvyA0Q";
 var CLIENTES_API = SUPABASE_URL + "/rest/v1/clientes";
 
 function supabaseHeaders(extra) {
