@@ -5,23 +5,7 @@ if (!sessao) {
 }
 
 var usuario = JSON.parse(sessao);
-
-// Revalida se o usuário ainda existe no cadastro
-var cadastro = JSON.parse(localStorage.getItem("gv_usuarios_json") || "[]");
-var ainda_existe = null;
-for (var i = 0; i < cadastro.length; i++) {
-  if (cadastro[i].email.toLowerCase() === usuario.email.toLowerCase()) {
-    ainda_existe = cadastro[i];
-    break;
-  }
-}
-
-if (!ainda_existe) {
-  sessionStorage.removeItem("gv_user");
-  window.location.href = "login.html";
-}
-
-var userPlano = ainda_existe.plano || "basic";
+var userPlano = usuario.plano || "basic";
 
 // ===== DADOS DAS PÁGINAS =====
 var PAGES = {
