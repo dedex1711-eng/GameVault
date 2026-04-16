@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault – Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN DO ADMIN -->
+  <div id="adminLogin" class="admin-login">
+    <div class="login-card">
+      <div class="login-logo">🎮 Game<span class="accent">Vault</span></div>
+      <h2>Painel Administrativo</h2>
+      <p>Digite a senha de administrador para continuar.</p>
+      <div class="input-group">
+        <input type="password" id="adminSenha" placeholder="Senha do admin" />
+        <button id="btnAdminLogin">Entrar</button>
+      </div>
+      <div class="error-msg" id="adminError" style="display:none;">Senha incorreta.</div>
+    </div>
+  </div>
+
+  <!-- PAINEL ADMIN -->
+  <div id="adminPanel" style="display:none;">
+
+    <header class="admin-header">
+      <div class="admin-logo">🎮 Game<span class="accent">Vault</span> <span class="admin-tag">Admin</span></div>
+      <button class="btn-sair" id="btnSairAdmin">Sair</button>
+    </header>
+
+    <div class="admin-body">
+
+      <!-- FORMULÁRIO DE CADASTRO -->
+      <div class="card">
+        <h2 class="card-title" id="formTitle">➕ Cadastrar Novo Cliente</h2>
+        <form id="clienteForm">
+          <input type="hidden" id="editIndex" value="-1" />
+          <div class="form-grid">
+            <div class="input-group">
+              <label>Nome completo</label>
+              <input type="text" id="fNome" placeholder="Ex: João Silva" required />
+            </div>
+            <div class="input-group">
+              <label>E-mail</label>
+              <input type="email" id="fEmail" placeholder="Ex: joao@gmail.com" required />
+            </div>
+            <div class="input-group">
+              <label>Senha de acesso</label>
+              <input type="text" id="fSenha" placeholder="Ex: joao2024" required />
+            </div>
+            <div class="input-group">
+              <label>Plano</label>
+              <select id="fPlano">
+                <option value="basic">Basic</option>
+                <option value="premium">Premium</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary" id="btnSalvar">✅ Salvar Cliente</button>
+            <button type="button" class="btn-ghost" id="btnCancelarEdit" style="display:none;">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- LISTA DE CLIENTES -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">👥 Clientes Cadastrados</h2>
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar por nome ou e-mail..." />
+          </div>
+        </div>
+
+        <div id="listaVazia" class="lista-vazia" style="display:none;">
+          Nenhum cliente cadastrado ainda.
+        </div>
+
+        <div class="table-wrapper">
+          <table id="tabelaClientes">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Senha</th>
+                <th>Plano</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaBody"></tbody>
+          </table>
+        </div>
+
+        <div class="table-footer">
+          <span id="totalClientes">0 clientes</span>
+          <button class="btn-export" id="btnExport">📋 Copiar lista</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

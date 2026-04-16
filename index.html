@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault - Pague uma vez, jogue para sempre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- URGENCY BAR -->
+  <div class="urgency-bar">
+    DESCONTO SO HOJE NESSA PAGINA - <span id="urgency-date"></span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-icon">&#127918;</span>
+        <span class="logo-text">Game<span class="accent">Vault</span></span>
+      </div>
+      <a href="login.html" class="btn-member-access">&#128274; Area do Membro</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">&#9889; OFERTA ESPECIAL POR TEMPO LIMITADO</div>
+      <h1 class="hero-title">PAGUE UMA VEZ E<br /><span class="accent">JOGUE PARA SEMPRE</span>,<br />SEM MENSALIDADES!</h1>
+      <p class="hero-subtitle">Funciona em: PC, Notebook, TV Android, TV Box, Projetor, PS3, Celular Android e Tablet.<br />Sao <strong>+40 mil jogos</strong> por um preco unico!</p>
+      <a href="#planos" class="btn btn-primary btn-hero">
+        ADQUIRIR AGORA
+      </a>
+      <div class="hero-consoles">
+        <span>PS1</span><span>PS2</span><span>PS3</span><span>PS4</span><span>PS5</span><span>PSP</span><span>Xbox 360</span><span>Wii</span><span>Switch</span><span>N64</span><span>Atari</span><span>GBA</span>
+      </div>
+
+      <!-- VIDEO HERO -->
+      <div class="hero-video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xMDcNmSZhY0?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES CAROUSEL -->
+  <section class="games-section">
+    <div class="container">
+      <h2 class="section-title">Do PS3, PS2, PS1, PSP, Xbox 360, Wii, Nintendo Switch, Nintendo 64 ao Atari, e muito mais!</h2>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="game-card"><div class="game-thumb" style="background:#1a1a2e">&#127928;<span>Guitar Hero</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#2d0a0a">&#9876;<span>Mortal Kombat</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#0a1628">&#128663;<span>Need for Speed</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#1a2d0a">&#129312;<span>Red Dead</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#1a0a0a">&#129503;<span>Resident Evil 4</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#2d1a0a">&#128299;<span>Scarface</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#0a2d1a">&#129347;<span>Skate 3</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#0a1a2d">&#9917;<span>PES / FIFA</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#1a0a2d">&#127807;<span>The Last of Us</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#2d2d0a">&#129464;<span>Ben 10</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#0a0a2d">&#128299;<span>Black</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#2d0a2d">&#127979;<span>Bully</span></div></div>
+          <!-- duplicated for infinite scroll -->
+          <div class="game-card"><div class="game-thumb" style="background:#1a1a2e">&#127928;<span>Guitar Hero</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#2d0a0a">&#9876;<span>Mortal Kombat</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#0a1628">&#128663;<span>Need for Speed</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#1a2d0a">&#129312;<span>Red Dead</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#1a0a0a">&#129503;<span>Resident Evil 4</span></div></div>
+          <div class="game-card"><div class="game-thumb" style="background:#2d1a0a">&#128299;<span>Scarface</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">COMO FUNCIONA NOSSO SISTEMA</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon">&#128179;</div>
+          <h3>Escolha seu plano</h3>
+          <p>Selecione o plano Basic ou Premium e realize o pagamento unico.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon">&#128140;</div>
+          <h3>Receba por e-mail</h3>
+          <p>Apos a confirmacao, voce recebe o acesso automaticamente no seu e-mail ou WhatsApp.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon">&#11015;</div>
+          <h3>Baixe e instale</h3>
+          <p>Siga o passo a passo simples de instalacao e configure em minutos.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <div class="step-icon">&#128377;</div>
+          <h3>Jogue para sempre</h3>
+          <p>Acesso vitalicio a todos os jogos, sem mensalidades, sem surpresas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">O QUE VOCE VAI RECEBER</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">&#127918;</div>
+          <h3>Vasta Biblioteca de Jogos</h3>
+          <p>Sistema proprio com drive livre de virus e jogos separados por consoles. Tudo organizado para voce.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#9889;</div>
+          <h3>Facil Instalacao e Uso</h3>
+          <p>Sistema desenvolvido para ser simples e intuitivo. Qualquer pessoa consegue instalar.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128640;</div>
+          <h3>Praticidade no Envio</h3>
+          <p>Envio automatico, independente do horario da compra. Receba na hora!</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#9854;</div>
+          <h3>Pagamento Unico e Vitalicio</h3>
+          <p>Pague uma unica vez e tenha acesso ilimitado a todos os jogos para sempre.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128246;</div>
+          <h3>Jogue Offline</h3>
+          <p>Apos o download voce pode jogar os jogos offline sempre que quiser, sem internet.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128737;</div>
+          <h3>Suporte Completo</h3>
+          <p>Suporte total para te ajudar em tudo, do inicio ao fim da instalacao.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">O QUE NOSSOS CLIENTES ESTAO FALANDO</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Cara, que produto incrivel! Instalei em menos de 10 minutos e ja estava jogando PS3. Valeu muito a pena!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">M</div>
+            <div>
+              <strong>Marcos Silva</strong>
+              <span>Cliente verificado</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Melhor compra que fiz esse ano. Mais de 40 mil jogos por esse preco? Absurdo! Recomendo demais."</p>
+          <div class="testimonial-author">
+            <div class="avatar">A</div>
+            <div>
+              <strong>Ana Paula</strong>
+              <span>Cliente verificado</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Suporte excelente! Tive uma duvida na instalacao e me responderam na hora. Produto top demais!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">R</div>
+            <div>
+              <strong>Rafael Costa</strong>
+              <span>Cliente verificado</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Instalei na minha TV Box e ficou perfeito. Meus filhos adoraram! Jogos de PS2 rodando liso."</p>
+          <div class="testimonial-author">
+            <div class="avatar">J</div>
+            <div>
+              <strong>Joao Ferreira</strong>
+              <span>Cliente verificado</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Comprei o Premium e nao me arrependo. Nintendo Switch, PS3, tudo funcionando. Incrivel!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">C</div>
+            <div>
+              <strong>Carla Mendes</strong>
+              <span>Cliente verificado</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Recebi tudo no e-mail em menos de 5 minutos. Passo a passo muito claro. Recomendo 100%!"</p>
+          <div class="testimonial-author">
+            <div class="avatar">L</div>
+            <div>
+              <strong>Lucas Oliveira</strong>
+              <span>Cliente verificado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="planos">
+    <div class="container">
+      <div class="offer-badge">OFERTA ESPECIAL - VALIDA ATE <span id="offer-date"></span></div>
+      <h2 class="section-title">VALOR PROMOCIONAL<br /><span class="accent">DEPOIS DISSO, NUNCA MAIS POR ESSE PRECO!</span></h2>
+
+      <div class="countdown">
+        <div class="countdown-block">
+          <span id="hours">00</span>
+          <label>Horas</label>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <span id="minutes">09</span>
+          <label>Minutos</label>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <span id="seconds">56</span>
+          <label>Segundos</label>
+        </div>
+      </div>
+
+      <div class="plans-grid">
+        <!-- BASIC -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="plan-name">PLANO BASIC</div>
+          </div>
+          <ul class="plan-features">
+            <li class="yes">&#9989; PAGAMENTO UNICO - ACESSO VITALICIO</li>
+            <li class="yes">&#9989; + de 30 consoles</li>
+            <li class="yes">&#9989; Mais de 20.000 jogos</li>
+            <li class="yes">&#9989; Instalacao completa e rapida</li>
+            <li class="yes">&#9989; Suporte total pra te ajudar em tudo</li>
+            <li class="yes">&#9989; Receba por E-mail ou WhatsApp com passo a passo</li>
+            <li class="yes">&#9989; PlayStation 1, PS2, Super Nintendo, Mega Drive, Atari, Game Boy e muito mais!</li>
+            <li class="no">&#10060; PlayStation 3, Xbox 360, Nintendo Switch</li>
+            <li class="no">&#10060; Biblioteca completa e organizada</li>
+            <li class="no">&#10060; Consoles mais recentes</li>
+          </ul>
+          <div class="plan-price">
+            <div class="price-old">DE R$159,99</div>
+            <div class="price-new">R$<span class="price-value">10</span><span class="price-cents">,00</span></div>
+            <div class="price-label">a vista</div>
+          </div>
+          <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-plan">QUERO AGORA MESMO</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="plan-card plan-featured">
+          <div class="plan-badge">MAIS POPULAR</div>
+          <div class="plan-header">
+            <div class="plan-name">PLANO PREMIUM</div>
+          </div>
+          <ul class="plan-features">
+            <li class="yes">&#9989; PAGAMENTO UNICO - ACESSO VITALICIO</li>
+            <li class="yes">&#9989; + de 60 consoles</li>
+            <li class="yes">&#9989; Mais de 40.000 jogos</li>
+            <li class="yes">&#9989; Instalacao completa e rapida</li>
+            <li class="yes">&#9989; Suporte total pra te ajudar em tudo</li>
+            <li class="yes">&#9989; Receba por E-mail ou WhatsApp com passo a passo</li>
+            <li class="yes">&#9989; PlayStation 1, PS2, Super Nintendo, Mega Drive, Atari, Game Boy e muito mais!</li>
+            <li class="yes">&#9989; PlayStation 3, Xbox 360, Nintendo Switch</li>
+            <li class="yes">&#9989; Biblioteca completa e organizada</li>
+            <li class="yes">&#9989; Consoles mais recentes</li>
+          </ul>
+          <div class="plan-price">
+            <div class="price-old">DE R$259,99</div>
+            <div class="price-new">R$<span class="price-value">27</span><span class="price-cents">,00</span></div>
+            <div class="price-label">a vista</div>
+          </div>
+          <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-plan">QUERO AGORA MESMO</a>
+        </div>
+      </div>
+
+      <div class="security-badges">
+        <div class="badge">&#128274; Pagamento 100% Seguro</div>
+        <div class="badge">&#9889; Entrega Imediata</div>
+        <div class="badge">&#128737; Garantia de 7 dias</div>
+        <div class="badge">&#128179; Pix, Cartao ou Boleto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">DUVIDAS FREQUENTES</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quais dispositivos os jogos rodam?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Os jogos funcionam em PC, Notebook, TV Android, TV Box, Projetor, PS3, Celular Android e Tablet. Qualquer dispositivo com Android ou Windows consegue rodar o sistema.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Posso instalar em ate quantos dispositivos?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Voce pode instalar em quantos dispositivos quiser! Nao ha limite de instalacoes. O acesso e vitalicio e sem restricoes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como funciona a instalacao nos dispositivos?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Apos a compra, voce recebe um passo a passo completo por e-mail ou WhatsApp. A instalacao e simples e rapida, qualquer pessoa consegue fazer sem dificuldade.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Tenho que pagar todo mes?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Nao! O pagamento e unico. Voce paga uma vez e tem acesso vitalicio a todos os jogos, sem mensalidades, sem taxas extras, sem surpresas.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            E possivel salvar o progresso dos meus jogos?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! O sistema suporta save states e saves nativos dos emuladores. Voce pode salvar e continuar de onde parou a qualquer momento.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            E possivel adicionar mais jogos alem dos que ja vem?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! O sistema e aberto e voce pode adicionar ROMs de jogos que ja possui. A biblioteca base ja vem com mais de 40 mil jogos no plano Premium.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="footer-cta">
+    <div class="container">
+      <h2>Nao perca essa oportunidade!</h2>
+      <p>Mais de 40 mil jogos por um preco unico. Oferta por tempo limitado.</p>
+      <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-hero">GARANTIR MEU ACESSO AGORA</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">&#127918;</span>
+        <span class="logo-text">Game<span class="accent">Vault</span></span>
+      </div>
+      <p>2026 GameVault. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Politica de Privacidade</a>
+        <a href="#">Suporte</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameVault – Entrar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card">
+
+      <div class="login-logo">
+        <span>🎮</span>
+        <span class="logo-text">Game<span class="accent">Vault</span></span>
+      </div>
+
+      <div class="login-divider"></div>
+
+      <h1 class="login-title">Acesse seu portal</h1>
+      <p class="login-subtitle">Entre com o e-mail e senha enviados após sua compra.</p>
+
+      <form id="loginForm" autocomplete="off">
+        <div class="input-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="seu@email.com"
+            required
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="senha">Senha</label>
+          <div class="input-password">
+            <input
+              type="password"
+              id="senha"
+              placeholder="Sua senha de acesso"
+              required
+              autocomplete="current-password"
+            />
+            <button type="button" class="toggle-password" id="toggleSenha" aria-label="Mostrar senha">👁️</button>
+          </div>
+        </div>
+
+        <div class="login-error" id="loginError" style="display:none;"></div>
+
+        <button type="submit" class="btn-login" id="btnLogin">
+          Entrar no Portal
+        </button>
+      </form>
+
+      <p class="login-note">
+        Não tem acesso ainda?
+        <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer">Fale conosco no WhatsApp</a>
+      </p>
+
+    </div>
+
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
