@@ -157,7 +157,16 @@ var navPs4 = document.getElementById("navPs4");
 var navPs5 = document.getElementById("navPs5");
 if (userPlano === "premium") {
   [navPs3, navPs4, navPs5].forEach(function(el) {
-    if (el) { el.classList.add("unlocked"); el.classList.remove("nav-item-premium"); }
+    if (el) { 
+      el.classList.add("unlocked"); 
+      el.classList.remove("nav-item-premium");
+      el.style.display = "flex";
+    }
+  });
+} else {
+  // Esconde completamente para Basic
+  [navPs3, navPs4, navPs5].forEach(function(el) {
+    if (el) el.style.display = "none";
   });
 }
 
