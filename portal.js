@@ -135,23 +135,12 @@ userPlanEl.textContent        = "MEMBRO " + userPlano.toUpperCase();
 userAvatarEl.textContent      = initial;
 userAvatarSmallEl.textContent = initial;
 
-// Desbloqueia PS3, PS4 e PS5 se premium
+// Desbloqueia PS3 se premium
 var navPs3 = document.getElementById("navPs3");
-var navPs4 = document.getElementById("navPs4");
-var navPs5 = document.getElementById("navPs5");
 if (userPlano === "premium") {
-  [navPs3, navPs4, navPs5].forEach(function(el) {
-    if (el) { 
-      el.classList.add("unlocked"); 
-      el.classList.remove("nav-item-premium");
-      el.style.display = "flex";
-    }
-  });
+  if (navPs3) { navPs3.classList.add("unlocked"); navPs3.classList.remove("nav-item-premium"); navPs3.style.display = "flex"; }
 } else {
-  // Esconde completamente para Basic
-  [navPs3, navPs4, navPs5].forEach(function(el) {
-    if (el) el.style.display = "none";
-  });
+  if (navPs3) navPs3.style.display = "none";
 }
 
 // Renderiza página inicial
