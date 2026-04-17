@@ -270,7 +270,7 @@
             <div class="price-new">R$<span class="price-value">10</span><span class="price-cents">,00</span></div>
             <div class="price-label">a vista</div>
           </div>
-          <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-plan">QUERO AGORA MESMO</a>
+          <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-plan" onclick="event.preventDefault();abrirCheckout('basic')">QUERO AGORA MESMO</a>
         </div>
 
         <!-- PREMIUM -->
@@ -296,7 +296,7 @@
             <div class="price-new">R$<span class="price-value">27</span><span class="price-cents">,00</span></div>
             <div class="price-label">a vista</div>
           </div>
-          <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-plan">QUERO AGORA MESMO</a>
+          <a href="https://wa.me/5583998929124" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-plan" onclick="event.preventDefault();abrirCheckout('premium')">QUERO AGORA MESMO</a>
         </div>
       </div>
 
@@ -398,5 +398,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="checkout.js"></script>
 </body>
 </html>
