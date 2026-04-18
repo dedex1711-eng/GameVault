@@ -298,16 +298,12 @@ document.getElementById("btnRegistrarWebhook").addEventListener("click", functio
   btn.textContent = "Registrando...";
   statusEl.textContent = "";
 
-  fetch("https://api.pimpou.com/api/v2/webhooks", {
+  fetch("https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/registrar-webhook", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-API-Key": "prime_9111381d1391da95ec825eb0c76e34c0",
-      "X-API-Secret": "7c111d26525f268ab1bfe5eff3db463c384aaec47483527a2d1ed4ecb2e0f6585336fd1446fc2d6424e88f45c288fbda854725979a68549a36f22a2bd0ca947a"
-    },
-    body: JSON.stringify({
-      url: "https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/pix-webhook"
-    })
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxemd5d254bXpuZ2h2cWxueGpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTY0NzcsImV4cCI6MjA5MTkzMjQ3N30.Cv8r70nYMoRyk_O3HFwxluOWaSMwVGko-uonxqvyA0Q"
+    }
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
