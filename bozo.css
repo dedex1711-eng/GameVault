@@ -413,6 +413,21 @@ tbody td {
   font-size: 0.95rem;
 }
 
+.btn-send {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-send:hover { background: #bfdbfe; }
+.btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+
 /* ===== TOAST ===== */
 .toast {
   position: fixed;

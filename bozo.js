@@ -175,6 +175,7 @@ function renderTabela(filtro) {
       '<td><div class="td-acoes">' +
         '<button class="btn-edit" onclick="editarCliente(' + realIdx + ')">Editar</button>' +
         '<button class="btn-del" onclick="deletarCliente(' + realIdx + ')">Remover</button>' +
+        '<button class="btn-send" onclick="enviarAcesso(' + realIdx + ')">&#128140; Enviar</button>' +
       '</div></td>';
     tabelaBody.appendChild(tr);
   });
@@ -250,7 +251,36 @@ function mostrarLoading(show) {
   }
 }
 
-// ===== TOAST =====
+// ===== ENVIAR ACESSO =====
+window.enviarAcesso = function(idx) {
+  var c = clientesCache[idx];
+  if (!c) return;
+  if (!confirm('Enviar e-mail de acesso para "' + c.nome + '" (' + c.email + ')?')) return;
+
+  var btn = document.querySelectorAll('.btn-send')[idx];
+  if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
+
+  fetch("https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/enviar-acesso", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxemd5d254bXpuZ2h2cWxueGpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTY0NzcsImV4cCI6MjA5MTkzMjQ3N30.Cv8r70nYMoRyk_O3HFwxluOWaSMwVGko-uonxqvyA0Q"
+    },
+    body: JSON.stringify({ nome: c.nome, email: c.email, senha: c.senha, plano: c.plano })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.ok) {
+      showToast("E-mail enviado para " + c.email + "!");
+    } else {
+      showToast("Erro: " + (data.error || "Tente novamente."), "error");
+    }
+  })
+  .catch(function() { showToast("Erro ao enviar e-mail.", "error"); })
+  .finally(function() {
+    if (btn) { btn.disabled = false; btn.textContent = '&#128140; Enviar'; }
+  });
+};
 var toastTimer;
 function showToast(msg, tipo) {
   toast.textContent = msg;
@@ -259,6 +289,48 @@ function showToast(msg, tipo) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(function() { toast.classList.remove("show"); }, 3000);
 }
+
+// ===== REGISTRAR WEBHOOK PIMPOU =====
+document.getElementById("btnRegistrarWebhook").addEventListener("click", function() {
+  var btn = document.getElementById("btnRegistrarWebhook");
+  var statusEl = document.getElementById("webhookStatus");
+  btn.disabled = true;
+  btn.textContent = "Registrando...";
+  statusEl.textContent = "";
+
+  fetch("https://api.pimpou.com/api/v2/webhooks", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key": "prime_9111381d1391da95ec825eb0c76e34c0",
+      "X-API-Secret": "7c111d26525f268ab1bfe5eff3db463c384aaec47483527a2d1ed4ecb2e0f6585336fd1446fc2d6424e88f45c288fbda854725979a68549a36f22a2bd0ca947a"
+    },
+    body: JSON.stringify({
+      url: "https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/pix-webhook"
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.success) {
+      statusEl.textContent = "Webhook registrado com sucesso!";
+      statusEl.style.color = "#16a34a";
+      showToast("Webhook registrado! Pagamentos serao automatizados.");
+    } else {
+      statusEl.textContent = data.message || data.error || "Verifique as credenciais.";
+      statusEl.style.color = "#dc2626";
+      showToast("Erro: " + (data.message || data.error), "error");
+    }
+  })
+  .catch(function(err) {
+    statusEl.textContent = "Erro de conexao.";
+    statusEl.style.color = "#dc2626";
+    showToast("Erro de conexao.", "error");
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.textContent = "Registrar Webhook Pimpou";
+  });
+});
 
 function esc(str) {
   return String(str)
