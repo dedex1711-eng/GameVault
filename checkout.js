@@ -9,45 +9,6 @@ var PLANOS = {
   premium: { nome: "Plano Premium", valor: 15.00, label: "R$ 15,00" }
 };
 
-// ===== GERAR PAYLOAD PIX (EMV) =====
-function gerarPixPayload(chave, nome, cidade, valor, txid) {
-  function campo(id, val) {
-    var len = String(val.length).padStart(2, "0");
-    return id + len + val;
-  }
-
-  function crc16(str) {
-    var crc = 0xFFFF;
-    for (var i = 0; i < str.length; i++) {
-      crc ^= str.charCodeAt(i) << 8;
-      for (var j = 0; j < 8; j++) {
-        crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
-      }
-    }
-    return ((crc & 0xFFFF).toString(16).toUpperCase()).padStart(4, "0");
-  }
-
-  var merchantAccountInfo = campo("00", "BR.GOV.BCB.PIX") + campo("01", chave);
-  var valorStr = valor.toFixed(2);
-  var nomeClean = nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "").substring(0, 25);
-  var cidadeClean = cidade.normalize("NFD").replace(/[\u0300-\u036f]/g, "").substring(0, 15);
-  var txidClean = (txid || "***").substring(0, 25);
-
-  var payload =
-    campo("00", "01") +
-    campo("26", merchantAccountInfo) +
-    campo("52", "0000") +
-    campo("53", "986") +
-    campo("54", valorStr) +
-    campo("58", "BR") +
-    campo("59", nomeClean) +
-    campo("60", cidadeClean) +
-    campo("62", campo("05", txidClean)) +
-    "6304";
-
-  return payload + crc16(payload);
-}
-
 // ===== CRIAR MODAL =====
 function criarModal() {
   if (document.getElementById("pixModal")) return;
@@ -69,6 +30,7 @@ function criarModal() {
     '        <div class="pix-form">',
     '          <input type="text" id="pixNome" placeholder="Seu nome completo" />',
     '          <input type="email" id="pixEmail" placeholder="Seu e-mail" />',
+    '          <input type="text" id="pixCpf" placeholder="Seu CPF (somente numeros)" maxlength="14" />',
     '          <button class="pix-btn" id="btnGerarPix">Gerar QR Code Pix</button>',
     '        </div>',
     '        <div class="pix-form-error" id="pixFormError"></div>',
@@ -144,18 +106,23 @@ function bindModalEvents() {
   document.getElementById("btnGerarPix").addEventListener("click", function() {
     nomeCliente  = document.getElementById("pixNome").value.trim();
     emailCliente = document.getElementById("pixEmail").value.trim();
-    var errEl = document.getElementById("pixFormError");
+    var cpf      = document.getElementById("pixCpf").value.replace(/\D/g, "");
+    var errEl    = document.getElementById("pixFormError");
 
-    if (!nomeCliente || !emailCliente) {
-      errEl.textContent = "Preencha seu nome e e-mail.";
+    if (!nomeCliente || !emailCliente || !cpf) {
+      errEl.textContent = "Preencha todos os campos.";
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailCliente)) {
       errEl.textContent = "E-mail invalido.";
       return;
     }
+    if (cpf.length !== 11) {
+      errEl.textContent = "CPF invalido. Digite os 11 numeros.";
+      return;
+    }
     errEl.textContent = "";
-    mostrarQR();
+    mostrarQR(cpf);
   });
 
   document.getElementById("btnCopiar").addEventListener("click", function() {
@@ -179,23 +146,59 @@ function bindModalEvents() {
   });
 }
 
-function mostrarQR() {
+function mostrarQR(cpf) {
   var plano = PLANOS[planoAtual];
-  var txid = "GV" + Date.now().toString().slice(-10);
-  var payload = gerarPixPayload(PIX_CHAVE, PIX_NOME, PIX_CIDADE, plano.valor, txid);
 
-  // QR Code via API gratuita
-  var qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(payload);
-
-  document.getElementById("pixQR").innerHTML = '<img src="' + qrUrl + '" alt="QR Code Pix" />';
-  document.getElementById("pixCodigo").value = payload;
-
-  // Troca step
+  // Mostra loading
+  document.getElementById("pixQR").innerHTML = '<div style="text-align:center;padding:40px;color:#6b6b8a;">Gerando QR Code...</div>';
   document.getElementById("step1").classList.remove("active");
   document.getElementById("step2").classList.add("active");
+  document.getElementById("btnPaguei").style.display = "none";
 
-  // Timer 10 minutos
-  iniciarTimer(600);
+  // Chama Edge Function do Supabase
+  fetch("https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/criar-pix", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxemd5d254bXpuZ2h2cWxueGpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTY0NzcsImV4cCI6MjA5MTkzMjQ3N30.Cv8r70nYMoRyk_O3HFwxluOWaSMwVGko-uonxqvyA0Q"
+    },
+    body: JSON.stringify({
+      amount: plano.valor,
+      description: plano.nome + " - GameVault",
+      nome: nomeCliente,
+      email: emailCliente,
+      cpf: cpf
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.status && data.paymentData) {
+      var pd = data.paymentData;
+
+      // QR Code base64
+      document.getElementById("pixQR").innerHTML =
+        '<img src="data:image/png;base64,' + pd.qrcode + '" alt="QR Code Pix" style="width:200px;height:200px;border-radius:12px;border:2px solid #e2e2ec;padding:8px;" />';
+
+      // Copia e cola
+      document.getElementById("pixCodigo").value = pd.copiaecola;
+      document.getElementById("btnPaguei").style.display = "block";
+
+      // Timer
+      iniciarTimer(600);
+    } else {
+      document.getElementById("pixQR").innerHTML =
+        '<p style="color:#dc2626;text-align:center;">Erro ao gerar PIX: ' + (data.error || "Tente novamente.") + '</p>';
+      document.getElementById("step1").classList.add("active");
+      document.getElementById("step2").classList.remove("active");
+    }
+  })
+  .catch(function(err) {
+    document.getElementById("pixQR").innerHTML =
+      '<p style="color:#dc2626;text-align:center;">Erro de conexao. Tente novamente.</p>';
+    document.getElementById("step1").classList.add("active");
+    document.getElementById("step2").classList.remove("active");
+    console.error(err);
+  });
 }
 
 function iniciarTimer(segundos) {
