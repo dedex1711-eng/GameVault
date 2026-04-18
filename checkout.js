@@ -140,9 +140,23 @@ function bindModalEvents() {
       "Ola! Acabei de pagar o " + plano.nome + " (" + plano.label + ") pelo Pix.\n" +
       "Nome: " + nomeCliente + "\n" +
       "E-mail: " + emailCliente + "\n\n" +
-      "Aguardo a liberacao do meu acesso!"
+      "Aguardo meus dados de acesso!"
     );
-    window.open("https://wa.me/" + WHATSAPP + "?text=" + msg, "_blank");
+    // Mostra mensagem de confirmação
+    var confirmDiv = document.createElement("div");
+    confirmDiv.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;";
+    confirmDiv.innerHTML =
+      '<div style="background:#fff;border-radius:20px;padding:36px 28px;max-width:380px;width:100%;text-align:center;">' +
+        '<div style="font-size:3rem;margin-bottom:16px;">&#9989;</div>' +
+        '<h2 style="color:#1a1a2e;margin-bottom:12px;">Pagamento confirmado!</h2>' +
+        '<p style="color:#6b6b8a;margin-bottom:24px;">Seus dados de acesso serao enviados em breve pelo WhatsApp. Clique abaixo para agilizar!</p>' +
+        '<a href="https://wa.me/5583998929124?text=' + msg + '" target="_blank" ' +
+        'style="display:block;background:#25d366;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:700;font-size:1rem;margin-bottom:12px;">'+
+        '&#128242; Abrir WhatsApp</a>' +
+        '<button onclick="this.closest(\'div\').parentElement.remove()" ' +
+        'style="background:none;border:1px solid #e2e2ec;border-radius:8px;padding:10px 20px;cursor:pointer;color:#6b6b8a;font-size:0.9rem;">Fechar</button>' +
+      '</div>';
+    document.body.appendChild(confirmDiv);
   });
 }
 
