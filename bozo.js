@@ -298,7 +298,7 @@ document.getElementById("btnRegistrarWebhook").addEventListener("click", functio
   btn.textContent = "Registrando...";
   statusEl.textContent = "";
 
-  fetch("https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/registrar-webhook", {
+  fetch("https://fqzgywnxmznghvqlnxjl.supabase.co/functions/v1/registrar-webhook-", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
