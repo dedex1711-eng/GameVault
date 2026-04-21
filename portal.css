@@ -141,6 +141,7 @@ body {
 .badge-green { background: #dcfce7; color: #16a34a; }
 .badge-purple { background: #ede9fe; color: var(--accent); }
 .badge-orange { background: #ffedd5; color: var(--orange); }
+.badge-gold { background: #fef3c7; color: #d97706; }
 
 .nav-item-premium { opacity: 0.5; pointer-events: none; }
 .nav-item-premium.unlocked { opacity: 1; pointer-events: auto; }
@@ -348,6 +349,12 @@ body {
   background: #fff7ed;
   border-color: #fed7aa;
   color: #9a3412;
+}
+
+.info-banner.gold {
+  background: #fef3c7;
+  border-color: #fde68a;
+  color: #d97706;
 }
 
 /* ===== SECTION ===== */

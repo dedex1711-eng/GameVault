@@ -87,23 +87,29 @@ var PAGES = {
   ps4: {
     title: "Instalação PS4",
     icon: "🎮",
-    banner: { type: "purple", icon: "🎮", text: "Conteúdo exclusivo para membros <strong>Premium</strong>. Instale jogos diretamente no seu PS4." },
+    banner: { type: "purple", icon: "🎮", text: "Conteúdo <strong>COMPLETO</strong> para membros Premium. Versão de R$ 15 vem completa com PS4!" },
     videos: [
-      { label: "VÍDEO 1", title: "Conteúdo 1", desc: "Assista ao tutorial detalhado para completar sua configuração com sucesso.", url: "#", thumb: "🎮" }
+      { label: "VÍDEO 1", title: "Desbloqueio PS4", desc: "Tutorial completo para desbloquear e instalar jogos no PS4.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" },
+      { label: "VÍDEO 2", title: "Instalação de Jogos", desc: "Como instalar e gerenciar jogos no PS4 desbloqueado.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" }
     ],
     downloads: [
-      { name: "Instalação PS4 – Guia Completo", url: "#" }
+      { name: "PS4 Jailbreak - Guia Completo", url: "https://drive.google.com/file/d/exemplo-ps4-jailbreak" },
+      { name: "Homebrew Store PS4", url: "https://drive.google.com/file/d/exemplo-homebrew-ps4" },
+      { name: "Pacote de Jogos PS4", url: "https://drive.google.com/file/d/exemplo-jogos-ps4" }
     ]
   },
   ps5: {
     title: "Instalação PS5",
     icon: "🎮",
-    banner: { type: "purple", icon: "🎮", text: "Conteúdo exclusivo para membros <strong>Premium</strong>. Instale jogos diretamente no seu PS5." },
+    banner: { type: "gold", icon: "🎮", text: "Conteúdo <strong>EXCLUSIVO</strong> para membros Premium. PS5 só aparece para contas premium!" },
     videos: [
-      { label: "VÍDEO 1", title: "Conteúdo 1", desc: "Assista ao tutorial detalhado para completar sua configuração com sucesso.", url: "#", thumb: "🎮" }
+      { label: "VÍDEO 1", title: "Desbloqueio PS5", desc: "Tutorial exclusivo para desbloquear o PS5 - método mais recente.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" },
+      { label: "VÍDEO 2", title: "Retroarch PS5", desc: "Como instalar emuladores no PS5 desbloqueado.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" }
     ],
     downloads: [
-      { name: "Instalação PS5 – Guia Completo", url: "#" }
+      { name: "PS5 Exploit - Versão Exclusiva", url: "https://drive.google.com/file/d/exemplo-ps5-exploit" },
+      { name: "Emuladores PS5 Pack", url: "https://drive.google.com/file/d/exemplo-emuladores-ps5" },
+      { name: "Homebrew PS5 - Ferramentas", url: "https://drive.google.com/file/d/exemplo-homebrew-ps5" }
     ]
   },
   suporte: { title: "Suporte", icon: "🛟", type: "support" }
@@ -135,12 +141,21 @@ userPlanEl.textContent        = "MEMBRO " + userPlano.toUpperCase();
 userAvatarEl.textContent      = initial;
 userAvatarSmallEl.textContent = initial;
 
-// Desbloqueia PS3 se premium
+// Desbloqueia conteúdo premium baseado no plano
 var navPs3 = document.getElementById("navPs3");
+var navPs4 = document.getElementById("navPs4");
+var navPs5 = document.getElementById("navPs5");
+
 if (userPlano === "premium") {
+  // Premium tem acesso a tudo: PS3, PS4 e PS5
   if (navPs3) { navPs3.classList.add("unlocked"); navPs3.classList.remove("nav-item-premium"); navPs3.style.display = "flex"; }
+  if (navPs4) { navPs4.classList.add("unlocked"); navPs4.classList.remove("nav-item-premium"); navPs4.style.display = "flex"; }
+  if (navPs5) { navPs5.classList.add("unlocked"); navPs5.classList.remove("nav-item-premium"); navPs5.style.display = "flex"; }
 } else {
+  // Basic não tem acesso a PS3, PS4 nem PS5
   if (navPs3) navPs3.style.display = "none";
+  if (navPs4) navPs4.style.display = "none";
+  if (navPs5) navPs5.style.display = "none";
 }
 
 // Renderiza página inicial
@@ -152,7 +167,12 @@ for (var n = 0; n < navItems.length; n++) {
   navItems[n].addEventListener("click", function(e) {
     e.preventDefault();
     var page = this.getAttribute("data-page");
-    if (page === "ps3" && userPlano !== "premium") return;
+    
+    // Controle de acesso para conteúdo premium
+    if ((page === "ps3" || page === "ps4" || page === "ps5") && userPlano !== "premium") {
+      return;
+    }
+    
     renderPage(page);
     closeSidebar();
   });

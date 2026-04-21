@@ -22,6 +22,12 @@ export const USUARIOS = [
     senha: "basico456",
     nome: "Cliente Basic",
     plano: "basic"
+  },
+  {
+    email: "premium@gmail.com",
+    senha: "premium123",
+    nome: "Cliente Premium",
+    plano: "premium"
   }
   // Adicione mais clientes aqui...
 ];
