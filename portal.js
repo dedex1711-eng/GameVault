@@ -87,7 +87,7 @@ var PAGES = {
   ps4: {
     title: "Instalação PS4",
     icon: "🎮",
-    banner: { type: "purple", icon: "🎮", text: "Conteúdo <strong>COMPLETO</strong> para membros Premium. Versão de R$ 15 vem completa com PS4!" },
+    banner: { type: "purple", icon: "🎮", text: "Conteúdo <strong>COMPLETO</strong> para membros Premium. Acesso exclusivo ao PlayStation 4!" },
     videos: [
       { label: "VÍDEO 1", title: "Desbloqueio PS4", desc: "Tutorial completo para desbloquear e instalar jogos no PS4.", url: "https://www.youtube.com/watch?v=jeLBVHTDyEs", thumb: "🎮" },
       { label: "VÍDEO 2", title: "Instalação de Jogos", desc: "Como instalar e gerenciar jogos no PS4 desbloqueado.", url: "https://www.youtube.com/watch?v=hjk4nS-2Vdw", thumb: "🎮" }
