@@ -89,13 +89,12 @@ var PAGES = {
     icon: "🎮",
     banner: { type: "purple", icon: "🎮", text: "Conteúdo <strong>COMPLETO</strong> para membros Premium. Versão de R$ 15 vem completa com PS4!" },
     videos: [
-      { label: "VÍDEO 1", title: "Desbloqueio PS4", desc: "Tutorial completo para desbloquear e instalar jogos no PS4.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" },
-      { label: "VÍDEO 2", title: "Instalação de Jogos", desc: "Como instalar e gerenciar jogos no PS4 desbloqueado.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" }
+      { label: "VÍDEO 1", title: "Desbloqueio PS4", desc: "Tutorial completo para desbloquear e instalar jogos no PS4.", url: "https://www.youtube.com/watch?v=jeLBVHTDyEs", thumb: "🎮" },
+      { label: "VÍDEO 2", title: "Instalação de Jogos", desc: "Como instalar e gerenciar jogos no PS4 desbloqueado.", url: "https://www.youtube.com/watch?v=hjk4nS-2Vdw", thumb: "🎮" }
     ],
     downloads: [
-      { name: "PS4 Jailbreak - Guia Completo", url: "https://drive.google.com/file/d/exemplo-ps4-jailbreak" },
-      { name: "Homebrew Store PS4", url: "https://drive.google.com/file/d/exemplo-homebrew-ps4" },
-      { name: "Pacote de Jogos PS4", url: "https://drive.google.com/file/d/exemplo-jogos-ps4" }
+      { name: "Shadps4 Download", url: "https://shadps4.net/downloads/" },
+      { name: "Pacote de Jogos PS4", url: "https://romsfun.com/roms/playstation-4/" }
     ]
   },
   ps5: {
@@ -103,13 +102,11 @@ var PAGES = {
     icon: "🎮",
     banner: { type: "gold", icon: "🎮", text: "Conteúdo <strong>EXCLUSIVO</strong> para membros Premium. PS5 só aparece para contas premium!" },
     videos: [
-      { label: "VÍDEO 1", title: "Desbloqueio PS5", desc: "Tutorial exclusivo para desbloquear o PS5 - método mais recente.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" },
-      { label: "VÍDEO 2", title: "Retroarch PS5", desc: "Como instalar emuladores no PS5 desbloqueado.", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", thumb: "🎮" }
+      { label: "VÍDEO 1", title: "Desbloqueio PS5", desc: "Tutorial exclusivo para desbloquear o PS5 - método mais recente.", url: "https://www.youtube.com/watch?v=EPKKk_w-3iU", thumb: "🎮" }
     ],
     downloads: [
-      { name: "PS5 Exploit - Versão Exclusiva", url: "https://drive.google.com/file/d/exemplo-ps5-exploit" },
-      { name: "Emuladores PS5 Pack", url: "https://drive.google.com/file/d/exemplo-emuladores-ps5" },
-      { name: "Homebrew PS5 - Ferramentas", url: "https://drive.google.com/file/d/exemplo-homebrew-ps5" }
+      { name: "Pcsx5 - Versão Exclusiva", url: "https://pcsx5.org" },
+      { name: "Download Jogos PS5", url: "https://romslab.com/category/playstation-5/" }
     ]
   },
   suporte: { title: "Suporte", icon: "🛟", type: "support" }
